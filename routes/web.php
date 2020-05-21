@@ -23,4 +23,10 @@ Route::get('/home', function () {
     return view('index');
 });
 
-Route::get('/Category/{id?}', 'CategoryController@index')->name('Category.show');
+Route::get('Category/{id?}', 'CategoryController@index')->name('Category.index');
+
+Route::get('Cart', 'CartController@index')->name('cart.index');
+
+Route::get('Cart/{id}', 'CartController@tmp')->name('cart.tmp');
+
+Route::delete('Cart_del/{id}', 'CartController@destroy')->name('cart.destroy');

@@ -11,10 +11,10 @@
             產品類別
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{{route('Category.show','1')}}">生活用品</a>
-                <a class="dropdown-item" href="{{route('Category.show','2')}}">玩具</a>
-                <a class="dropdown-item" href="{{route('Category.show','3')}}">五金百貨</a>
-                <a class="dropdown-item" href="{{route('Category.show','4')}}">書籍</a>
+                <a class="dropdown-item" href="{{route('Category.index','1')}}">生活用品</a>
+                <a class="dropdown-item" href="{{route('Category.index','2')}}">玩具</a>
+                <a class="dropdown-item" href="{{route('Category.index','3')}}">五金百貨</a>
+                <a class="dropdown-item" href="{{route('Category.index','4')}}">書籍</a>
           </div>
         </li>
 
@@ -28,6 +28,9 @@
                 @endguest
                 @auth
                   <ul class="navbar-nav ml-auto">
+                    <a class="nav-link " href="{{route('cart.index')}}" >
+                      My Cart <span class="caret"></span>
+                    </a>
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ auth()->user()->name }} 你好<span class="caret"></span>
