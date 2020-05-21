@@ -29,13 +29,12 @@
             <td>{{$cart_list->product_name}}</td>
             <td>{{$cart_list->product_price}}</td>
             <td>
-                <select id="{{$cart_list->product_id}}" name="quantity"class="custom-select col-sm-5" required>
-                  <option @if($cart_list->quantity=='1') selected @endif value="1">1</option>
-                  <option @if($cart_list->quantity=='2') selected @endif value="2">2</option>
-                  <option @if($cart_list->quantity=='3') selected @endif value="3">3</option>
-                  <option @if($cart_list->quantity=='4') selected @endif value="4">4</option>
-                  <option @if($cart_list->quantity=='5') selected @endif value="5">5</option>
-                </select>
+
+
+                <input type="number" class="form-control mx-sm-1 mb-1" min="1" max="10" name ="quantity" value="{{$cart_list->quantity}}">
+
+
+
             </td>
             <td>{{$cart_list->product_price*$cart_list->quantity}}</td>
             <td><button type="button" class="btn btn-primary mb-2" onclick="document.getElementById('');">修改</button>
