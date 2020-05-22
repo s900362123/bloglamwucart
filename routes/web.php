@@ -25,8 +25,14 @@ Route::get('/home', function () {
 
 Route::get('Category/{id?}', 'CategoryController@index')->name('Category.index');
 
-Route::get('Cart', 'CartController@index')->name('cart.index');
+Route::get('Cart', 'CartController@show')->name('cart.show');
 
 Route::get('Cart/{id}', 'CartController@tmp')->name('cart.tmp');
 
 Route::delete('Cart_del/{id}', 'CartController@destroy')->name('cart.destroy');
+
+Route::get('Cart_update/{id}', 'CartController@update')->name('cart.update');
+
+Route::get('Cart_comfirm', 'CartController@comfirm')->name('cart.comfirm');
+
+Route::post('Order', 'OrderController@store')->name('order.store');

@@ -28,7 +28,7 @@
                 @endguest
                 @auth
                   <ul class="navbar-nav ml-auto">
-                    <a class="nav-link " href="{{route('cart.index')}}" >
+                    <a class="nav-link " href="{{route('cart.show')}}" >
                       My Cart <span class="caret"></span>
                     </a>
                     <li class="nav-item dropdown">

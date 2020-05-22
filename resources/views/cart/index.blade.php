@@ -5,8 +5,7 @@
 
 
 
-<form method="POST" action="">
- @csrf
+
     <table class="table table-striped ">
       <thead>
         <tr>
@@ -29,21 +28,24 @@
             <td>{{$cart_list->product_name}}</td>
             <td>{{$cart_list->product_price}}</td>
             <td>
-
-
-                <input type="number" class="form-control mx-sm-1 mb-1" min="1" max="10" name ="quantity" value="{{$cart_list->quantity}}">
-
-
+              <form id="update{{$cart_show_num+1}}" method="get" action="{{url('Cart_update/'.$cart_list->product_id)}}" >
+                @csrf
+                <input type="number" id ="quantity"class="form-control mx-sm-1 mb-1" min="1" max="10" name ="quantity{{$cart_list->product_id}}" value="{{$cart_list->quantity}}">
+              </form>
 
             </td>
             <td>{{$cart_list->product_price*$cart_list->quantity}}</td>
-            <td><button type="button" class="btn btn-primary mb-2" onclick="document.getElementById('');">修改</button>
-            <a href="#" class="btn btn-danger mb-2" onclick="document.getElementById('delete{{$cart_show_num+1}}').submit()">移除</a></td>
+            <td>
+
+            <a href="#" class="btn btn-primary mb-2"onclick="document.getElementById('update{{$cart_show_num+1}}').submit()">修改</a>
+            <a href="#" class="btn btn-danger mb-2" onclick="document.getElementById('delete{{$cart_show_num+1}}').submit()">移除</a>
+
             <form id="delete{{$cart_show_num+1}}" method="POST" action="{{route('cart.destroy',$cart_list->product_id)}}" >
               @csrf
               {{ method_field('DELETE') }}
             </form>
 
+            </td>
 
           </tr>
 
@@ -53,6 +55,6 @@
     </table>
 
 
-</form>
-<button type="submit" class="btn btn-success mb-2">Submit</button>
+
+<button type="button" class="btn btn-success mb-2" onclick="window.location='{{route('cart.comfirm')}}'" >送出訂單</button>
 @endsection
