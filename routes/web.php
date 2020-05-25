@@ -25,14 +25,26 @@ Route::get('/home', function () {
 
 Route::get('Category/{id?}', 'CategoryController@index')->name('Category.index');
 
-Route::get('Cart', 'CartController@show')->name('cart.show');
 
-Route::get('Cart/{id}', 'CartController@tmp')->name('cart.tmp');
+Route::group(['middleware' => 'auth'],function(){
 
-Route::delete('Cart_del/{id}', 'CartController@destroy')->name('cart.destroy');
 
-Route::get('Cart_update/{id}', 'CartController@update')->name('cart.update');
+  Route::get('Cart', 'CartController@show')->name('cart.show');
 
-Route::get('Cart_comfirm', 'CartController@comfirm')->name('cart.comfirm');
+  Route::get('Cart/{id}', 'CartController@tmp')->name('cart.tmp');
 
-Route::post('Order', 'OrderController@store')->name('order.store');
+  Route::delete('Cart_del/{id}', 'CartController@destroy')->name('cart.destroy');
+
+  Route::get('Cart_update/{id}', 'CartController@update')->name('cart.update');
+
+  Route::get('Cart_comfirm', 'CartController@comfirm')->name('cart.comfirm');
+
+  Route::post('Order', 'OrderController@store')->name('order.store');
+
+  Route::get('order', 'OrderController@index')->name('order.index');
+
+  Route::get('order_detail/{id}', 'OrderController@show')->name('order.show');
+
+
+
+});
